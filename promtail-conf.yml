@@ -14,14 +14,11 @@ scrape_configs:
       - targets:
           - localhost
         labels:
-          job: varlogs
+          job: sysout
           __path__: /var/log/*log
     pipeline_stages:
       - json:
           expressions:
             level: level
-            message: message
       - labels:
           level: level
-          message: message
-          timestamp: timestamp
